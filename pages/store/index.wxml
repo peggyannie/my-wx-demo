@@ -1,0 +1,17 @@
+<view class="wrap">
+  <view class="wrap-input">
+    <image class="icon-input" bindtap="bindtapDel" data-item="{{list}}" src="../../static/icon-1.svg" />
+    <input class="weui-input" bindinput="bindtapSearch" bindconfirm="bindtapAdd" model:value="{{inputVal}}" placeholder="查询囤货状态..."
+      maxlength="20" />
+  </view>
+  <view class="todo-wrap">
+    <block wx:for="{{list}}" wx:key="key">
+      <view class="todo-item">
+        <text class="item-txt">{{item.label}}</text>
+        <text>数量：{{item.count}}</text>
+        <image class="item-icon" bindtap="bindtapDel" data-item="{{item}}" src="../../static/icon-2.svg" />
+      </view>
+    </block>
+  </view>
+  <image class="icon-add" bindtap="bindtapAdd" data-item="{{list}}" src="../../static/icon-3.svg" />
+</view>

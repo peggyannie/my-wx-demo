@@ -1,0 +1,23 @@
+<view class="wrap">
+  <view class="form">
+    <view class="form-item">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          <image class="item-icon" src="../../static/icon-5.svg" />
+          {{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class="form-item flex">
+      <text>名称：</text>
+      <input class="weui-input"  model:value="{{inputLabel}}"  maxlength="20"  placeholder="请输入物件名称"
+      maxlength="20" />
+    </view>
+    <view class="form-item flex">
+      <text>数量：</text>
+      <input class="weui-input"  type="number" maxlength="3" model:value="{{inputCount}}" placeholder="请输入物件数量"
+      maxlength="20" />
+    </view>
+  </view>
+  <button class="btn" bindtap="confirm">确定</button>
+</view>

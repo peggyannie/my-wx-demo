@@ -1,9 +1,18 @@
 {
   "pages":[
+    "pages/store/index",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/todo/todo"
+    "pages/add/index"
   ],
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/store/index",
+      "text": "杂物间"
+    },{
+      "pagePath": "pages/index/index",
+      "text": "home"
+    }]
+  },
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
