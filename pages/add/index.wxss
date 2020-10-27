@@ -17,6 +17,8 @@
   width: 16px;
   height: 16px;
   padding-right: 10px;
+  position: relative;
+  top: 3px;
 }
 .flex{
   display: flex;
@@ -24,6 +26,7 @@
 
 .weui-input{
   padding:0 10px;
+  flex: 1;
 }
 
 .btn{

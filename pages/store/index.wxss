@@ -1,13 +1,10 @@
 .wrap-input{
   display: flex;
-  height: 50px;
-  line-height: 50px;
+  padding: 16px 0;
   background: #fff;
 }
 .weui-input{
   flex: 1;
-  position: relative;
-  top: 14px;
   padding-right: 16px;
 }
 
@@ -19,9 +16,11 @@
 .item-txt{
   flex: 1;
 }
-.todo-wrap{
-  padding: 16px 0;
+.item-count{
+  text-align: right;
+  width: 50px;
 }
+
 .todo-item{
   background:#fff;
   padding-left: 16px;
@@ -38,13 +37,30 @@
   width: 16px;
   height: 16px;
   position: relative;
-  top: 16px;
+  top: 3px;
   padding: 0 16px;
 }
 .icon-add{
   width: 36px;
   height: 36px;
   position: fixed;
-  right: 26px;
-  bottom: 26px;
+  right: 50px;
+  bottom: 70px;
+}
+.tool{
+  display: flex;
+  justify-content: space-between;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 20px;
+  margin: 10px 0;
+}
+
+.item-tool{
+  padding: 0 10px;
+}
+.add{
+  background: #d81e06;
+  color: #fff;
+  border-radius: 6px;
 }

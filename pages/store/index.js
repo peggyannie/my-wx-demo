@@ -2,7 +2,9 @@ Page({
   data: {
     inputVal: '',
     list: [],
-    initData: []
+    initData: [],
+    array: ['全部', '日用品', '护肤品', '医药品'],
+    index: ''
   },
   onShow: function () {
     this.init()
@@ -27,19 +29,41 @@ Page({
       this.init()
     }
   },
-  bindtapAdd:function(){
+  bindtapAdd: function () {
     wx.navigateTo({
       url: '/pages/add/index',
     })
   },
   bindtapDel: function (e) {
-    const del = e.currentTarget.dataset.item
+    const del = e.currentTarget.dataset.item;
     const newlist = this.data.initData.filter((item) => item.label !== del.label)
-    console.log('newlist',newlist)
     this.setData({
       inputVal: null,
-      list: newlist
+      list: newlist,
+      initData: newlist
     })
     wx.setStorageSync('todo', newlist)
-  }
+  },
+  bindtapDetail: function (e) {
+    const detail = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: `/pages/add/index?detail=${JSON.stringify(detail)}`,
+    })
+  },
+  bindPickerChange: function (e) {
+    const index = e.detail.value
+    this.setData({
+      index: index
+    })
+    if (index == 0) {
+      this.setData({
+        list: this.data.initData
+      })
+    } else if (index > 0) {
+      const newlist = this.data.initData.filter((item) => item.sort == this.data.array[index])
+      this.setData({
+        list: newlist
+      })
+    }
+  },
 })

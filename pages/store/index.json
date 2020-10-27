@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "杂物间",
-  "usingComponents": {}
+  "usingComponents": {},
+  "disableScroll": true
 }
