@@ -1,15 +1,17 @@
 <view class="wrap">
-  <view class="wrap-input">
-    <image class="icon-input" bindtap="bindtapDel" data-item="{{list}}" src="../../static/icon-1.svg" />
-    <input class="weui-input" bindinput="bindtapSearch" bindconfirm="bindtapAdd" model:value="{{inputVal}}" placeholder="查询储物状态..." maxlength="20" />
-  </view>
-  <view class="tool">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <view class="item-tool" wx:if="{{initData.length}}">{{array[index] || '全部'}}</view>
-    </picker>
-    <view class="item-tool flex">
-      <!-- <view class="add  mr-10" bindtap="bindtapAdd">添加</view>
+  <view class="fixed">
+    <view class="wrap-input">
+      <image class="icon-input" bindtap="bindtapDel" data-item="{{list}}" src="../../static/icon-1.svg" />
+      <input class="weui-input" bindinput="bindtapSearch" bindconfirm="bindtapAdd" model:value="{{inputVal}}" placeholder="查询储物状态..." maxlength="20" />
+    </view>
+    <view class="tool">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="item-tool" wx:if="{{initData.length}}">{{array[index] || '全部'}}</view>
+      </picker>
+      <view class="item-tool flex">
+        <!-- <view class="add  mr-10" bindtap="bindtapAdd">添加</view>
       <view class="add" bindtap="bindtapAdd">计划</view> -->
+      </view>
     </view>
   </view>
   <view class="todo-wrap">
@@ -20,6 +22,10 @@
         <image class="item-icon" bindtap="bindtapDel" data-item="{{item}}" src="../../static/icon-2.svg" />
       </view>
     </block>
+    <view wx:if="{{!list || list.length == 0}}"class="null">
+      <image src="../../static/icon-6.svg" class="null-bg" />
+      小主的仓库空空如也~
+    </view>
   </view>
   <image class="icon-add" bindtap="bindtapAdd" data-item="{{list}}" src="../../static/icon-3.svg" />
 </view>
