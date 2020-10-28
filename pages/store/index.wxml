@@ -2,13 +2,15 @@
   <view class="wrap-input">
     <image class="icon-input" bindtap="bindtapDel" data-item="{{list}}" src="../../static/icon-1.svg" />
     <input class="weui-input" bindinput="bindtapSearch" bindconfirm="bindtapAdd" model:value="{{inputVal}}" placeholder="查询储物状态..." maxlength="20" />
-  
   </view>
   <view class="tool">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
       <view class="item-tool" wx:if="{{initData.length}}">{{array[index] || '全部'}}</view>
     </picker>
-    <text class="item-tool add" bindtap="bindtapAdd">新增</text>
+    <view class="item-tool flex">
+      <!-- <view class="add  mr-10" bindtap="bindtapAdd">添加</view>
+      <view class="add" bindtap="bindtapAdd">计划</view> -->
+    </view>
   </view>
   <view class="todo-wrap">
     <block wx:for="{{list}}" wx:key="key">
@@ -19,5 +21,5 @@
       </view>
     </block>
   </view>
-  <!-- <image class="icon-add" bindtap="bindtapAdd" data-item="{{list}}" src="../../static/icon-3.svg" /> -->
+  <image class="icon-add" bindtap="bindtapAdd" data-item="{{list}}" src="../../static/icon-3.svg" />
 </view>

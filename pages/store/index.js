@@ -7,11 +7,17 @@ Page({
     index: '0',
     searchWord: ''
   },
-  onLoad: function () {
-    const data = wx.getStorageSync('store')
-    this.setData({
-      list: data || newlist,
-      initData: data || newlist
+  onShow: function () {
+    const that = this;
+    wx.getStorage({
+      key: 'store',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          list: res.data || [],
+          initData: res.data || []
+        })
+      }
     })
   },
   bindtapSearch: function (e) {
@@ -35,7 +41,7 @@ Page({
     })
   },
   bindtapAdd: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/add/index',
     })
   },
@@ -51,7 +57,7 @@ Page({
   },
   bindtapDetail: function (e) {
     const detail = e.currentTarget.dataset.item;
-    wx.redirectTo({
+    wx.navigateTo({
       url: `/pages/add/index?detail=${JSON.stringify(detail)}`,
     })
   },

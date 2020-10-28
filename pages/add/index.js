@@ -9,6 +9,7 @@ Page({
   onLoad: function (opt) {
     if (opt.detail) {
       const data = JSON.parse(opt.detail);
+      wx.setNavigationBarTitle({ title: data.label })
       this.setData({
         inputLabel: data.label,
         inputCount: data.count,
@@ -44,9 +45,7 @@ Page({
         bz: inputDetail
       }]
       wx.setStorageSync('store', newlist)
-      wx.redirectTo({
-        url: '/pages/store/index',
-      })
+      wx.navigateBack()
     } else {
       wx.showToast({
         title: '必填项没填~',
@@ -75,9 +74,7 @@ Page({
         }
       })
       wx.setStorageSync('store', newlist)
-      wx.redirectTo({
-        url: '/pages/store/index',
-      })
+      wx.navigateBack()
     } else {
       wx.showToast({
         title: '必填项没填~',

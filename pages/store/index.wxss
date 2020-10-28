@@ -44,8 +44,8 @@
   width: 36px;
   height: 36px;
   position: fixed;
-  right: 50px;
-  bottom: 70px;
+  right: 30px;
+  bottom: 60px;
 }
 .tool{
   display: flex;
@@ -60,7 +60,7 @@
   padding: 0 10px;
 }
 .add{
-  background: #d81e06;
-  color: #fff;
-  border-radius: 6px;
+  color: #d81e06;
+  font-weight: 900;
 }
+
