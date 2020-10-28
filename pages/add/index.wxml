@@ -10,15 +10,15 @@
     </view>
     <view class="form-item flex">
       <text>名称：</text>
-      <input disabled="{{edit}}" class="weui-input" model:value="{{inputLabel}}" maxlength="15" placeholder="洗发水" />
+      <input disabled="{{edit}}" class="weui-input" model:value="{{inputLabel}}" maxlength="15" placeholder="卫生纸" />
     </view>
     <view class="form-item flex">
       <text>数量/单位：</text>
-      <input class="weui-input" maxlength="5" model:value="{{inputCount}}" placeholder="2包" />
+      <input class="weui-input" maxlength="5" model:value="{{inputCount}}" placeholder="2卷" />
     </view>
     <view class="form-item flex">
       <text>备注：</text>
-      <input class="weui-input" maxlength="20" model:value="{{inputDetail}}" placeholder="400ml瓶装" />
+      <input class="weui-input" maxlength="20" model:value="{{inputDetail}}" placeholder="80抽" />
     </view>
   </view>
   <button wx:if="{{!edit}}" class="btn" bindtap="confirm">确定</button>

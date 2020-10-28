@@ -4,33 +4,63 @@ Page({
     list: [],
     initData: [],
     array: ['全部', '日用品', '护肤品', '医药品'],
-    index: ''
+    index: '0',
+    searchWord: ''
   },
-  onShow: function () {
-    this.init()
-  },
-  init: function () {
-    const data = wx.getStorageSync('todo') || []
+  onLoad: function () {
+    console.log('11')
+    const data = wx.getStorageSync('store')
+    const newlist = this.mock()
     this.setData({
-      list: data,
-      initData: data
+      list: data || newlist,
+      initData: data || newlist
     })
+  },
+  mock: function () {
+    return [{
+      label: '抽纸',
+      count: '10包',
+      sort: '日用品',
+      bz: ''
+    }, {
+      label: '卷纸',
+      count: '12卷',
+      sort: '日用品',
+      bz: '120抽/卷'
+    }, {
+      label: '棉签',
+      count: '2包',
+      sort: '医药品',
+      bz: '100支/包'
+    }, {
+      label: '保湿霜',
+      count: '1瓶',
+      sort: '护肤品',
+      bz: '50ml/瓶'
+    }]
   },
   bindtapSearch: function (e) {
     const item = e.detail.value
-    if (item) {
-      const newlist = this.data.initData.filter((val) => {
-        return val.label.indexOf(item) > -1
-      })
-      this.setData({
-        list: newlist
-      })
-    } else {
-      this.init()
-    }
+    this.setData({
+      searchWord: item
+    }, () => {
+      this.updateList()
+    })
+  },
+  updateList: function () {
+    const { searchWord, index } = this.data;
+    const sort = this.data.array[index]
+    const list = this.data.initData.filter((val) => {
+      const s = searchWord == '' ? true : val.label.indexOf(searchWord) > -1;
+      const r = sort == '全部' ? true : val.sort == sort
+      return s && r
+    })
+    this.setData({
+      list: list
+    })
   },
   bindtapAdd: function () {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/add/index',
     })
   },
@@ -42,11 +72,11 @@ Page({
       list: newlist,
       initData: newlist
     })
-    wx.setStorageSync('todo', newlist)
+    wx.setStorageSync('store', newlist)
   },
   bindtapDetail: function (e) {
     const detail = e.currentTarget.dataset.item;
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/add/index?detail=${JSON.stringify(detail)}`,
     })
   },
@@ -54,16 +84,8 @@ Page({
     const index = e.detail.value
     this.setData({
       index: index
+    }, () => {
+      this.updateList()
     })
-    if (index == 0) {
-      this.setData({
-        list: this.data.initData
-      })
-    } else if (index > 0) {
-      const newlist = this.data.initData.filter((item) => item.sort == this.data.array[index])
-      this.setData({
-        list: newlist
-      })
-    }
   },
 })

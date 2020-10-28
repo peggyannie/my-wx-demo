@@ -2,8 +2,8 @@ Page({
   data: {
     array: ['日用品', '护肤品', '医药品'],
     index: '0',
-    inputLabel: '',
-    inputCount: '',
+    inputLabel: '卫生纸',
+    inputCount: '1卷',
     edit: false
   },
   onLoad: function (opt) {
@@ -27,7 +27,7 @@ Page({
     const inputLabel = this.data.inputLabel
     const inputCount = this.data.inputCount
     const inputDetail = this.data.inputDetail
-    const initdata = wx.getStorageSync('todo') || []
+    const initdata = wx.getStorageSync('store') || []
     const flag = initdata.some((val) => val.label == inputLabel)
     if (flag) {
       wx.showToast({
@@ -43,8 +43,8 @@ Page({
         sort: this.data.array[this.data.index],
         bz: inputDetail
       }]
-      wx.setStorageSync('todo', newlist)
-      wx.navigateTo({
+      wx.setStorageSync('store', newlist)
+      wx.redirectTo({
         url: '/pages/store/index',
       })
     } else {
@@ -58,7 +58,7 @@ Page({
     const inputLabel = this.data.inputLabel
     const inputCount = this.data.inputCount
     const inputDetail = this.data.inputDetail
-    const initdata = wx.getStorageSync('todo') || []
+    const initdata = wx.getStorageSync('store') || []
     if (inputLabel && inputCount) {
       const newlist = initdata.map((item) => {
         if (item.label == inputLabel) {
@@ -74,8 +74,8 @@ Page({
           }
         }
       })
-      wx.setStorageSync('todo', newlist)
-      wx.navigateTo({
+      wx.setStorageSync('store', newlist)
+      wx.redirectTo({
         url: '/pages/store/index',
       })
     } else {

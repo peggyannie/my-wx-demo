@@ -6,7 +6,7 @@
   </view>
   <view class="tool">
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <view class="item-tool" wx:if="{{list.length}}">{{array[index] || '全部'}}</view>
+      <view class="item-tool" wx:if="{{initData.length}}">{{array[index] || '全部'}}</view>
     </picker>
     <text class="item-tool add" bindtap="bindtapAdd">新增</text>
   </view>
