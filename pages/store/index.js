@@ -8,36 +8,11 @@ Page({
     searchWord: ''
   },
   onLoad: function () {
-    console.log('11')
     const data = wx.getStorageSync('store')
-    const newlist = this.mock()
     this.setData({
       list: data || newlist,
       initData: data || newlist
     })
-  },
-  mock: function () {
-    return [{
-      label: '抽纸',
-      count: '10包',
-      sort: '日用品',
-      bz: ''
-    }, {
-      label: '卷纸',
-      count: '12卷',
-      sort: '日用品',
-      bz: '120抽/卷'
-    }, {
-      label: '棉签',
-      count: '2包',
-      sort: '医药品',
-      bz: '100支/包'
-    }, {
-      label: '保湿霜',
-      count: '1瓶',
-      sort: '护肤品',
-      bz: '50ml/瓶'
-    }]
   },
   bindtapSearch: function (e) {
     const item = e.detail.value
