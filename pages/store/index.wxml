@@ -6,23 +6,28 @@
     </view>
     <view class="tool">
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view class="item-tool" wx:if="{{initData.length}}">{{array[index] || '全部'}}</view>
+        <view class="item-tool" wx:if="{{initData.length}}">{{array[index]}}</view>
       </picker>
       <view class="item-tool flex">
-        <!-- <view class="add  mr-10" bindtap="bindtapAdd">添加</view>
-      <view class="add" bindtap="bindtapAdd">计划</view> -->
+        <view class="add  mr-10" bindtap="bindtapToBuy">TOBUY</view>
+        <!-- <view class="add" bindtap="bindtapAdd">ZANW</view> -->
       </view>
     </view>
   </view>
   <view class="todo-wrap">
     <block wx:for="{{list}}" wx:key="key">
       <view class="todo-item">
+        <view class="tobuy" wx:if="{{item.tobuy}}">
+          <checkbox-group bindchange="checkboxChange">
+            <checkbox value="{{item.label}}" />
+          </checkbox-group>
+        </view>
         <text class="item-txt" bindtap="bindtapDetail" data-item="{{item}}">{{item.label}}</text>
         <text class="item-count">{{item.count}}</text>
         <image class="item-icon" bindtap="bindtapDel" data-item="{{item}}" src="../../static/icon-2.svg" />
       </view>
     </block>
-    <view wx:if="{{!list || list.length == 0}}"class="null">
+    <view wx:if="{{!list || list.length == 0}}" class="null">
       <image src="../../static/icon-6.svg" class="null-bg" />
       小主的仓库空空如也~
     </view>

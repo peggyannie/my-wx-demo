@@ -4,7 +4,8 @@ Page({
     index: '0',
     inputLabel: '卫生纸',
     inputCount: '1卷',
-    edit: false
+    edit: false,
+    tobuy: false
   },
   onLoad: function (opt) {
     if (opt.detail) {
@@ -15,7 +16,14 @@ Page({
         inputCount: data.count,
         index: this.data.array.findIndex((v) => v == data.sort),
         inputDetail: data.bz,
+        tobuy: data.tobuy,
         edit: true
+      })
+    }
+    if (opt.tobuy) {
+      wx.setNavigationBarTitle({ title: '计划购买' })
+      this.setData({
+        tobuy: true
       })
     }
   },
@@ -42,7 +50,8 @@ Page({
         label: inputLabel,
         count: inputCount,
         sort: this.data.array[this.data.index],
-        bz: inputDetail
+        bz: inputDetail,
+        tobuy: this.data.tobuy
       }]
       wx.setStorageSync('store', newlist)
       wx.navigateBack()
@@ -65,7 +74,8 @@ Page({
             label: inputLabel,
             count: inputCount,
             sort: this.data.array[this.data.index],
-            bz: inputDetail
+            bz: inputDetail,
+            tobuy: this.data.tobuy
           }
         } else {
           return {

@@ -12,7 +12,6 @@ Page({
     wx.getStorage({
       key: 'store',
       success(res) {
-        console.log(res.data)
         that.setData({
           list: res.data || [],
           initData: res.data || []
@@ -45,6 +44,11 @@ Page({
       url: '/pages/add/index',
     })
   },
+  bindtapToBuy: function () {
+    wx.navigateTo({
+      url: '/pages/add/index?tobuy=true',
+    })
+  },
   bindtapDel: function (e) {
     const del = e.currentTarget.dataset.item;
     const newlist = this.data.initData.filter((item) => item.label !== del.label)
@@ -69,4 +73,18 @@ Page({
       this.updateList()
     })
   },
+  checkboxChange: function (e) {
+    const values = e.detail.value
+    const newlist = this.data.initData.map((item) => {
+      return {
+        ...item,
+        tobuy: item.label === values[0] ? false : item.tobuy
+      }
+    })
+    this.setData({
+      list: newlist,
+      initData: newlist
+    })
+    wx.setStorageSync('store', newlist)
+  }
 })
